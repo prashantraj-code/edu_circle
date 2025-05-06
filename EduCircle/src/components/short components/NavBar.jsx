@@ -109,19 +109,18 @@ const Navbar = () => {
 
   return (
     <NavbarContainer>
+    
       <NavContent>
         <Logo>
           <FaBookReader />
           EduCircle
         </Logo>
         <NavLinks>
-          <StyledNavLink onClick={() => {}}>
-            Home
-          </StyledNavLink>
+          <StyledNavLink onClick={() => {}}>Home</StyledNavLink>
           <StyledNavLink onClick={() => {}}>Study Groups</StyledNavLink>
           <StyledNavLink onClick={() => {}}>Resources</StyledNavLink>
           <StyledNavLink onClick={() => {}}>Schedule</StyledNavLink>
-          <CreateButton onClick={() => {}}>Create Group</CreateButton>
+          <CreateButton onClick={() => {window.location.href="/meeting"}}>Create Meeting</CreateButton>
         </NavLinks>
         <MobileMenuButton onClick={toggleMenu}>
           {isOpen ? <FaTimes /> : <FaBars />}
@@ -129,20 +128,16 @@ const Navbar = () => {
       </NavContent>
       {isOpen && (
         <MobileMenu>
-          <StyledNavLink>
-            Home
-          </StyledNavLink>
-          <StyledNavLink>
-            Study Groups
-          </StyledNavLink>
-          <StyledNavLink>
-            Resources
-          </StyledNavLink>
-          <StyledNavLink>
-            Schedule
-          </StyledNavLink>
-          <CreateButton>
-            Create Group
+          <StyledNavLink>Home</StyledNavLink>
+          <StyledNavLink>Study Groups</StyledNavLink>
+          <StyledNavLink>Resources</StyledNavLink>
+          <StyledNavLink>Schedule</StyledNavLink>
+          <CreateButton
+            onClick={() => {
+              window.location.href = "/meeting";
+            }}
+          >
+            Create Meeting
           </CreateButton>
         </MobileMenu>
       )}
