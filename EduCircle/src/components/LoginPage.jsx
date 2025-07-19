@@ -12,6 +12,7 @@ const Container = styled.div`
   left: 0;
   justify-content: center;
   align-items: center;
+  font-family: "Futura", "Arial", sans-serif;
 `;
 
 const Form = styled.form`
@@ -26,6 +27,7 @@ const Form = styled.form`
   gap: 1.25rem;
   position: relative;
   z-index: 1;
+  font-family: "Futura", "Arial", sans-serif;
 `;
 
 const Input = styled.input`
@@ -35,6 +37,7 @@ const Input = styled.input`
   font-size: 1rem;
   outline: none;
   transition: border-color 0.3s;
+  font-family: "Futura", "Arial", sans-serif;
 
   &:focus {
     border-color: #5b3cc4;
@@ -51,6 +54,7 @@ const Button = styled.button`
   font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.3s;
+  font-family: "Futura", "Arial", sans-serif;
 
   &:hover {
     background-color: #432a9c;
@@ -67,6 +71,7 @@ const SecondaryButton = styled.button`
   font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
+  font-family: "Futura", "Arial", sans-serif;
 
   &:hover {
     background-color: #5b3cc4;
@@ -78,6 +83,7 @@ const Title = styled.h2`
   text-align: center;
   color: #5b3cc4;
   margin-bottom: 0.5rem;
+  font-family: "Futura", "Arial", sans-serif;
 `;
 
 const Login = () => {
@@ -88,11 +94,15 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
       const user = userCredential.user;
       console.log("User logged in:", user);
 
-      window.location.href = "/home"; 
+      window.location.href = "/home";
       navigate("/"); // Redirect to the home page after successful login
     } catch (error) {
       const errorCode = error.code;
