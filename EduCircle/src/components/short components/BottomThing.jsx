@@ -6,13 +6,16 @@ import groupImage3 from "../../assets/literature.jpeg";
 
 const Section = styled.div`
   padding: 2rem;
+  @media (max-width: 600px) {
+    padding: 1rem 0.5rem;
+  }
 `;
 
 const CardsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.5rem;
-  @media (max-width: 600px) {
+  @media (max-width: 900px) {
     grid-template-columns: 1fr;
     gap: 1rem;
   }
@@ -23,12 +26,22 @@ const GroupCard = styled.div`
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  @media (max-width: 600px) {
+    border-radius: 8px;
+    box-shadow: 0 0 4px rgba(0,0,0,0.04);
+  }
 `;
 
 const GroupImage = styled.img`
   width: 100%;
   height: 140px;
   object-fit: cover;
+  @media (max-width: 600px) {
+    height: 100px;
+  }
 `;
 
 const CardContent = styled.div`
@@ -58,16 +71,25 @@ const CardContent = styled.div`
 
   .info {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     font-size: 0.75rem;
     color: #6b7280;
     margin-bottom: 0.75rem;
+    gap: 0.5rem;
+    @media (max-width: 600px) {
+      flex-direction: column;
+      gap: 0.2rem;
+    }
   }
 
   .actions {
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: flex-start;
     font-size: 0.875rem;
+    margin-top: 0.5rem;
 
     button {
       border: none;
@@ -76,14 +98,35 @@ const CardContent = styled.div`
       cursor: pointer;
       font-weight: 500;
       transition: background 0.2s, color 0.2s;
+      margin-bottom: 0.25rem;
+      min-width: 100px;
+      @media (max-width: 600px) {
+        width: 100%;
+        min-width: 0;
+        font-size: 1rem;
+      }
     }
     button:first-child {
       background: #6366f1;
       color: white;
     }
-    button:last-child {
+    button:nth-child(2) {
       background: #22c55e;
       color: white;
+    }
+    button:last-child {
+      background: #ef4444;
+      color: white;
+    }
+  }
+
+  @media (max-width: 600px) {
+    padding: 0.7rem;
+    h4 {
+      font-size: 1.1rem;
+    }
+    p {
+      font-size: 1rem;
     }
   }
 `;
