@@ -59,8 +59,15 @@ const HeroButtons = styled.div`
 `;
 
 const HeroImage = styled.img`
+  width: 100%;
   max-width: 400px;
+  height: auto;
   border-radius: 8px;
+  display: block;
+  @media (max-width: 600px) {
+    max-width: 100%;
+    border-radius: 0;
+  }
 `;
 
 const SectionTitle = styled.h2`
@@ -74,6 +81,14 @@ const FeaturesGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1.5rem;
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
 `;
 
 const FeatureCard = styled.div`
@@ -116,7 +131,6 @@ const HomePage = () => {
       <SectionTitle>How EduCircle Works</SectionTitle>
       <FeaturesGrid>
         <FeatureCard>
-          <img src="/icons/group-icon.png" alt="Join Study Groups" width="32" />
           <h4>Join Study Groups</h4>
           <p>
             Find groups that match your interests or create your own to connect
@@ -124,7 +138,6 @@ const HomePage = () => {
           </p>
         </FeatureCard>
         <FeatureCard>
-          <img src="/icons/book-icon.png" alt="Share Resources" width="32" />
           <h4>Share Resources</h4>
           <p>
             Easily share Google Docs, notes, and study materials with your group
@@ -132,11 +145,6 @@ const HomePage = () => {
           </p>
         </FeatureCard>
         <FeatureCard>
-          <img
-            src="/icons/calendar-icon.png"
-            alt="Schedule Sessions"
-            width="32"
-          />
           <h4>Schedule Sessions</h4>
           <p>
             Plan and organize study sessions with an easy-to-use calendar
@@ -144,7 +152,6 @@ const HomePage = () => {
           </p>
         </FeatureCard>
         <FeatureCard>
-          <img src="/icons/video-icon.png" alt="Meet Virtually" width="32" />
           <h4>Meet Virtually</h4>
           <p>
             Connect via Zoom meetings to collaborate and study together in

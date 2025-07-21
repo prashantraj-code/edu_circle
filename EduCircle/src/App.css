@@ -2,7 +2,20 @@
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
-  text-align: center;
+  box-sizing: border-box;
+}
+
+@media (max-width: 900px) {
+  body {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 0.5rem;
+    text-align: center;
+  }
 }
 
 .logo {

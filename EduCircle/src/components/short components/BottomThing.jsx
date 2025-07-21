@@ -8,28 +8,14 @@ const Section = styled.div`
   padding: 2rem;
 `;
 
-const SectionHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.5rem;
-
-  h2 {
-    font-size: 1.5rem;
-    font-weight: 700;
-  }
-
-  span {
-    font-size: 0.875rem;
-    color: #3b82f6;
-    cursor: pointer;
-  }
-`;
-
 const CardsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.5rem;
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
 `;
 
 const GroupCard = styled.div`
@@ -84,17 +70,28 @@ const CardContent = styled.div`
     font-size: 0.875rem;
 
     button {
-      border: 1px solid #e5e7eb;
+      border: none;
       padding: 0.5rem 0.75rem;
       border-radius: 6px;
-      background: white;
       cursor: pointer;
+      font-weight: 500;
+      transition: background 0.2s, color 0.2s;
+    }
+    button:first-child {
+      background: #6366f1;
+      color: white;
+    }
+    button:last-child {
+      background: #22c55e;
+      color: white;
     }
   }
 `;
 
+import { useState } from "react";
+
 const BottomThing = () => {
-  const groups = [
+  const initialGroups = [
     {
       tag: "Mathematics",
       title: "Calculus Masters",
@@ -121,12 +118,14 @@ const BottomThing = () => {
     },
   ];
 
+  const [groups, setGroups] = useState(initialGroups);
+
+  const handleDelete = (idx) => {
+    setGroups((prev) => prev.filter((_, i) => i !== idx));
+  };
+
   return (
     <Section>
-      <SectionHeader>
-        <h2>Featured Study Groups</h2>
-        <span>View All →</span>
-      </SectionHeader>
       <CardsGrid>
         {groups.map((group, idx) => (
           <GroupCard key={idx}>
@@ -142,6 +141,12 @@ const BottomThing = () => {
               <div className="actions">
                 <button>View Group 📖</button>
                 <button>Join Group</button>
+                <button
+                  style={{ background: "#ef4444", color: "white" }}
+                  onClick={() => handleDelete(idx)}
+                >
+                  Delete
+                </button>
               </div>
             </CardContent>
           </GroupCard>

@@ -5,14 +5,17 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "./firebase"; // Import your Firebase auth instance
 
 const Container = styled.div`
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   width: 100%;
-  right: 0;
-  left: 0;
   justify-content: center;
   align-items: center;
   font-family: "Futura", "Arial", sans-serif;
+  padding: 2rem;
+  box-sizing: border-box;
+  @media (max-width: 600px) {
+    padding: 1rem;
+  }
 `;
 
 const Form = styled.form`
@@ -28,6 +31,13 @@ const Form = styled.form`
   position: relative;
   z-index: 1;
   font-family: "Futura", "Arial", sans-serif;
+  box-sizing: border-box;
+  @media (max-width: 600px) {
+    padding: 1rem;
+    max-width: 100%;
+    border-radius: 0;
+    box-shadow: none;
+  }
 `;
 
 const Input = styled.input`
@@ -102,8 +112,7 @@ const Login = () => {
       const user = userCredential.user;
       console.log("User logged in:", user);
 
-      window.location.href = "/home";
-      navigate("/"); // Redirect to the home page after successful login
+      navigate("/home"); // Redirect to the home page after successful login
     } catch (error) {
       const errorCode = error.code;
       const errorMessage = error.message;
@@ -115,7 +124,7 @@ const Login = () => {
   return (
     <Container>
       <Form onSubmit={handleSubmit}>
-        <Title>Login</Title>
+        <Title>EduCircle</Title>
         <Input
           type="email"
           placeholder="Email"

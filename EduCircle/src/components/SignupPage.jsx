@@ -5,12 +5,16 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "./firebase";
 
 const Container = styled.div`
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   width: 100%;
   justify-content: center;
   align-items: center;
-  
+  padding: 2rem;
+  box-sizing: border-box;
+  @media (max-width: 600px) {
+    padding: 1rem;
+  }
 `;
 
 const Form = styled.form`
@@ -25,6 +29,13 @@ const Form = styled.form`
   gap: 1.25rem;
   position: relative;
   z-index: 1;
+  box-sizing: border-box;
+  @media (max-width: 600px) {
+    padding: 1rem;
+    max-width: 100%;
+    border-radius: 0;
+    box-shadow: none;
+  }
 `;
 
 const Input = styled.input`
@@ -94,7 +105,11 @@ const Signup = () => {
     }
 
     try {
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
       const user = userCredential.user;
       console.log("User created:", user);
 
@@ -110,7 +125,7 @@ const Signup = () => {
   return (
     <Container>
       <Form onSubmit={handleSubmit}>
-        <Title>Sign Up</Title>
+        <Title>EduCircle</Title>
         <Input
           type="email"
           placeholder="Email"
@@ -132,7 +147,7 @@ const Signup = () => {
           onChange={(e) => setConfirmPassword(e.target.value)}
           required
         />
-        <Button type="submit">Create Account</Button>
+        <Button type="submit">Sign Up</Button>
         <SecondaryButton type="button" onClick={() => navigate("/login")}>
           Already have an account? Login
         </SecondaryButton>
